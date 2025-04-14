@@ -131,6 +131,10 @@ ul {
     max-width: 800px;
 }
 
+.floating-contact i {
+    color: #1d1d1f; /* Darker color */
+}
+
 .hero-section h1 {
     font-size: 56px;
     font-weight: 700;
