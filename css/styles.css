@@ -481,7 +481,7 @@ ul {
 }
 
 .scroll-arrow i {
-    font-size: 32px;  /* Adjust icon size */
+    font-size: 36px;  /* Adjust icon size */
     color: var(--arrow-gray);  /* Adjust icon color */
 }
 .scroll-arrow.visible {
