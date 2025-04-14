@@ -391,7 +391,7 @@ ul {
 
 /* Projects Section */
 .projects-section {
-    background-color: var(--main-white);
+    background-color: var(--main-light-gray);
 }
 
 .projects-scroll-container {
