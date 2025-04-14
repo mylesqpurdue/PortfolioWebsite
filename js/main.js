@@ -119,47 +119,75 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Horizontal Project Scrolling Controls
-    const scrollLeftBtn = document.querySelector('.scroll-left');
-    const scrollRightBtn = document.querySelector('.scroll-right');
-    const projectsContainer = document.querySelector('.projects-scroll-container');
+// Horizontal Project Scrolling Controls
+const scrollLeftBtn = document.querySelector('.scroll-left');
+const scrollRightBtn = document.querySelector('.scroll-right');
+const projectsContainer = document.querySelector('.projects-scroll-container');
+
+if (scrollLeftBtn && scrollRightBtn && projectsContainer) {
+    const scrollStep = 300; // Amount to scroll in pixels on each click
     
-    if (scrollLeftBtn && scrollRightBtn && projectsContainer) {
-        scrollLeftBtn.addEventListener('click', function() {
-            projectsContainer.scrollBy({
-                left: -300,
-                behavior: 'smooth'
-            });
-        });
+    // Function to check scroll position and update arrow visibility.
+    function updateScrollButtons() {
+        const scrollPos = projectsContainer.scrollLeft;
+        const maxScrollPos = projectsContainer.scrollWidth - projectsContainer.clientWidth;
         
-        scrollRightBtn.addEventListener('click', function() {
-            projectsContainer.scrollBy({
-                left: 300,
-                behavior: 'smooth'
-            });
-        });
-        
-        // Show/hide scroll buttons based on scroll position
-        projectsContainer.addEventListener('scroll', function() {
-            if (projectsContainer.scrollLeft <= 0) {
-                scrollLeftBtn.classList.add('disabled');
+        if (scrollPos <= 50) {
+            // Fully at the left: hide left arrow, show right arrow if available
+            scrollLeftBtn.classList.remove('visible');
+            if (maxScrollPos > 10) {
+                scrollRightBtn.classList.add('visible');
             } else {
-                scrollLeftBtn.classList.remove('disabled');
+                scrollRightBtn.classList.remove('visible');
             }
-            
-            if (projectsContainer.scrollLeft + projectsContainer.clientWidth >= projectsContainer.scrollWidth - 10) {
-                scrollRightBtn.classList.add('disabled');
-            } else {
-                scrollRightBtn.classList.remove('disabled');
-            }
-        });
-        
-        // Initial check
-        if (projectsContainer.scrollLeft <= 0) {
-            scrollLeftBtn.classList.add('disabled');
+        } else if (scrollPos >= maxScrollPos - 1250) {
+            // Fully at the right: show left arrow, hide right arrow.
+            scrollLeftBtn.classList.add('visible');
+            scrollRightBtn.classList.remove('visible');
+        } else {
+            // In between: show both arrows.
+            scrollLeftBtn.classList.add('visible');
+            scrollRightBtn.classList.add('visible');
         }
     }
     
+    // Click event for the left arrow button.
+    scrollLeftBtn.addEventListener('click', function() {
+        projectsContainer.scrollBy({
+            left: -scrollStep,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Click event for the right arrow button.
+    scrollRightBtn.addEventListener('click', function() {
+        projectsContainer.scrollBy({
+            left: scrollStep,
+            behavior: 'smooth'
+        });
+    });
+    
+    // When the user scrolls within the container, update the arrow state.
+    projectsContainer.addEventListener('scroll', updateScrollButtons);
+    
+    // Update arrow visibility when the window loads or is resized.
+    window.addEventListener('load', updateScrollButtons);
+    window.addEventListener('resize', updateScrollButtons);
+    
+    // Show arrows when the cursor enters the scroll container.
+    projectsContainer.addEventListener('mouseenter', updateScrollButtons);
+    
+    // Hide arrows when the cursor leaves the scroll container.
+    projectsContainer.addEventListener('mouseleave', () => {
+        scrollLeftBtn.classList.remove('visible');
+        scrollRightBtn.classList.remove('visible');
+    });
+    
+    // Initial update on load.
+    updateScrollButtons();
+}
+
+
     // Form submission handling
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
