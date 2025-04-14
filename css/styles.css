@@ -433,12 +433,14 @@ ul {
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     scroll-snap-align: start;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Added shadow */
 }
 
 .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Optionally make the hover shadow a bit stronger */
 }
+
 
 .project-content {
     padding: 30px;
