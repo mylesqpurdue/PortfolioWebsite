@@ -562,34 +562,53 @@ ul {
 /* Education Section */
 .education-section {
     background-color: var(--main-light-gray);
-}
-
-.education-item {
+  }
+  
+  .education-item {
     background-color: var(--main-white);
     border-radius: 18px;
     padding: 40px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease;
-    /* New flex layout for logo and content */
+    
+    /* Flex layout for logo and content */
     display: flex;
     align-items: center;
     gap: 20px;
-}
-
-.education-item:hover {
+  
+    /* Prevent text from overflowing */
+    word-wrap: break-word;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .education-item:hover {
     transform: translateY(-5px);
-}
-
-/* Logo Container */
-.education-logo {
+  }
+  
+  /* Logo Container */
+  .education-logo {
     flex: 0 0 auto;
-}
-
-.education-logo img {
-    max-width: 320px; /* Adjust size as needed */
+  }
+  
+  .education-logo img {
+    max-width: 320px; /* For larger screens */
     height: auto;
-}
-
+  }
+  
+  /* Responsive adjustments for mobile */
+  @media (max-width: 768px) {
+    .education-item {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px; /* Reduce padding on small devices */
+    }
+    
+    .education-logo img {
+      max-width: 100%; /* Make sure the image shrinks as needed */
+    }
+  }
+  
 /* Content Container */
 .education-content {
     flex: 1;
