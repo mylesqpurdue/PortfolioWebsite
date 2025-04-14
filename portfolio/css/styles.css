@@ -136,7 +136,7 @@ ul {
     font-weight: 700;
     margin-bottom: 10px;
     /* Monochrome gradient: from black to mid-gray */
-    background: linear-gradient(90deg, var(--main-black), var(--main-gray));
+    background: linear-gradient(90deg, var(--main-black), var(--main-black));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
