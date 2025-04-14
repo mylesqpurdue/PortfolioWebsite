@@ -569,12 +569,31 @@ ul {
     border-radius: 18px;
     padding: 40px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    text-align: center;
     transition: transform 0.3s ease;
+    /* New flex layout for logo and content */
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .education-item:hover {
     transform: translateY(-5px);
+}
+
+/* Logo Container */
+.education-logo {
+    flex: 0 0 auto;
+}
+
+.education-logo img {
+    max-width: 80px; /* Adjust size as needed */
+    height: auto;
+}
+
+/* Content Container */
+.education-content {
+    flex: 1;
+    text-align: left; /* Shift text to the right of the logo */
 }
 
 .education-content h3 {
@@ -587,6 +606,30 @@ ul {
     font-weight: 500;
     margin-bottom: 10px;
 }
+
+/* Relevant Courses Section */
+.relevant-courses {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.relevant-courses h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: var(--main-black);
+}
+
+.relevant-courses ul {
+    list-style: disc inside;
+    padding-left: 20px;
+}
+
+.relevant-courses li {
+    font-size: 16px;
+    color: var(--main-gray);
+    margin-bottom: 5px;
+}
+
 
 /* Skills Section */
 .skills-section {
