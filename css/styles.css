@@ -568,6 +568,7 @@ ul {
     background-color: var(--main-white);
     border-radius: 18px;
     padding: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     text-align: center;
     transition: transform 0.3s ease;
 }
