@@ -120,38 +120,39 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
 // Horizontal Project Scrolling Controls
+
+// Get references to necessary elements
+const scrollWrapper = document.querySelector('.projects-scroll-wrapper');
 const scrollLeftBtn = document.querySelector('.scroll-left');
 const scrollRightBtn = document.querySelector('.scroll-right');
 const projectsContainer = document.querySelector('.projects-scroll-container');
 
-if (scrollLeftBtn && scrollRightBtn && projectsContainer) {
+if (scrollWrapper && scrollLeftBtn && scrollRightBtn && projectsContainer) {
     const scrollStep = 300; // Amount to scroll in pixels on each click
-    
+
     // Function to check scroll position and update arrow visibility.
     function updateScrollButtons() {
         const scrollPos = projectsContainer.scrollLeft;
         const maxScrollPos = projectsContainer.scrollWidth - projectsContainer.clientWidth;
         
         if (scrollPos <= 50) {
-            // Fully at the left: hide left arrow, show right arrow if available
+            // When fully at the left: hide the left arrow,
+            // show the right arrow if scrollable content is available.
             scrollLeftBtn.classList.remove('visible');
-            if (maxScrollPos > 10) {
-                scrollRightBtn.classList.add('visible');
-            } else {
-                scrollRightBtn.classList.remove('visible');
-            }
+            scrollRightBtn.classList.toggle('visible', maxScrollPos > 0);
         } else if (scrollPos >= maxScrollPos - 1250) {
-            // Fully at the right: show left arrow, hide right arrow.
+            // When fully at the right: show the left arrow,
+            // hide the right arrow.
             scrollLeftBtn.classList.add('visible');
             scrollRightBtn.classList.remove('visible');
         } else {
-            // In between: show both arrows.
+            // When in between: show both arrows.
             scrollLeftBtn.classList.add('visible');
             scrollRightBtn.classList.add('visible');
         }
     }
     
-    // Click event for the left arrow button.
+    // Click event for the left arrow
     scrollLeftBtn.addEventListener('click', function() {
         projectsContainer.scrollBy({
             left: -scrollStep,
@@ -159,7 +160,7 @@ if (scrollLeftBtn && scrollRightBtn && projectsContainer) {
         });
     });
     
-    // Click event for the right arrow button.
+    // Click event for the right arrow
     scrollRightBtn.addEventListener('click', function() {
         projectsContainer.scrollBy({
             left: scrollStep,
@@ -167,22 +168,20 @@ if (scrollLeftBtn && scrollRightBtn && projectsContainer) {
         });
     });
     
-    // When the user scrolls within the container, update the arrow state.
+    // Update arrow visibility on scroll, load, and resize
     projectsContainer.addEventListener('scroll', updateScrollButtons);
-    
-    // Update arrow visibility when the window loads or is resized.
     window.addEventListener('load', updateScrollButtons);
     window.addEventListener('resize', updateScrollButtons);
     
-    // Show arrows when the cursor enters the scroll container.
-    projectsContainer.addEventListener('mouseenter', updateScrollButtons);
-    
-    // Hide arrows when the cursor leaves the scroll container.
-    projectsContainer.addEventListener('mouseleave', () => {
+    // Attach mouse events on the wrapper so that if the user's cursor is anywhere
+    // within the wrapper (which includes the arrows), the buttons remain visible.
+    scrollWrapper.addEventListener('mouseenter', updateScrollButtons);
+    scrollWrapper.addEventListener('mouseleave', () => {
+        // Hide arrows when the user leaves the whole wrapper area.
         scrollLeftBtn.classList.remove('visible');
         scrollRightBtn.classList.remove('visible');
     });
-    
+
     // Initial update on load.
     updateScrollButtons();
 }
