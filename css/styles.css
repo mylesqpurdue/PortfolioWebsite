@@ -220,7 +220,7 @@ ul {
 .stat-item {
     text-align: center;
     padding: 30px;
-    background-color: var(--main-light-gray);
+    background-color: var(--main-white);
     border-radius: 18px;
     transition: transform 0.3s ease;
 }
@@ -634,7 +634,7 @@ ul {
 
 /* Contact Section */
 .contact-section {
-    background-color: var(--main-white);
+    background-color: var(--main-light-gray);
 }
 
 .contact-grid {
