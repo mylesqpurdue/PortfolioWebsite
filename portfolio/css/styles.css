@@ -2,7 +2,7 @@
 
 /* Base Styles and Variables */
 :root {
-    --main-white: #ffffff;
+    --main-white: #f7f7f7;  /* Updated from #ffffff to a subtle grey */
     --main-black: #1d1d1f;
     --main-gray: #8e8e93;
     --main-light-gray: #f5f5f7;
@@ -13,12 +13,6 @@
 
 /* Reset and Global Styles */
 
-.hero-section h1 {
-    font-size: 56px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: var(--main-black);
-}
 * {
     margin: 0;
     padding: 0;
@@ -32,7 +26,7 @@ html {
 body {
     font-family: var(--apple-font);
     color: var(--main-black);
-    background-color: var(--main-white);
+    background-color: var(--main-white);  /* Now uses a subtle grey (#f7f7f7) */
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -135,11 +129,12 @@ ul {
     color: #1d1d1f; /* Darker color */
 }
 
+
 .hero-section h1 {
     font-size: 56px;
     font-weight: 700;
     margin-bottom: 10px;
-    /* Monochrome gradient: from black to mid-gray */
+    /* Monochrome gradient: from black to black for clean text */
     background: linear-gradient(90deg, var(--main-black), var(--main-black));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -626,6 +621,7 @@ ul {
     border-radius: 980px;
     font-size: 16px;
     transition: all 0.3s ease;
+    color: var(--main-black);
 }
 
 .skill-list li:hover {
