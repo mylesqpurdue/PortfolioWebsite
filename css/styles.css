@@ -118,7 +118,7 @@ ul {
     justify-content: center;
     text-align: center;
     padding: 0 20px;
-    background: linear-gradient(to bottom, var(--main-light-gray) 0%, var(--main-white) 100%);
+    background: linear-gradient(to bottom, var(--main-light-gray) 0%, var(--main-light-gray) 100%);
 }
 
 .hero-content {
@@ -195,7 +195,7 @@ ul {
 
 /* About Section */
 .about-section {
-    background-color: var(--main-white);
+    background-color: var(--main-light-gray);
 }
 
 .about-grid {
@@ -560,11 +560,11 @@ ul {
 
 /* Education Section */
 .education-section {
-    background-color: var(--main-white);
+    background-color: var(--main-light-gray);
 }
 
 .education-item {
-    background-color: var(--main-light-gray);
+    background-color: var(--main-white);
     border-radius: 18px;
     padding: 40px;
     text-align: center;
