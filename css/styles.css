@@ -211,36 +211,19 @@ ul {
     color: var(--main-black);
 }
 
-.about-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+/* New Image Section */
+.about-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.stat-item {
-    text-align: center;
-    padding: 30px;
-    background-color: var(--main-white);
+.about-image img {
+    width: 250px;       /* Adjust the size as needed */
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%; /* Makes the image circular */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    border-radius: 18px;
-    transition: transform 0.3s ease;
-}
-
-.stat-item:hover {
-    transform: translateY(-5px);
-}
-
-.stat-number {
-    display: block;
-    font-size: 36px;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: var(--main-black);
-}
-
-.stat-label {
-    font-size: 16px;
-    color: var(--main-gray);
 }
 
 /* Experience Section */
