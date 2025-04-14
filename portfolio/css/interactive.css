@@ -1,0 +1,271 @@
+/* Additional Interactive Elements CSS */
+
+/* Project Card Hover Effects */
+.project-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 113, 227, 0.1) 0%, rgba(0, 113, 227, 0) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+/* Skill Pill Animation */
+.skill-list li {
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-list li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+    transition: left 0.5s ease;
+}
+
+.skill-list li:hover::after {
+    left: 100%;
+}
+
+/* Section Reveal Animation */
+.section-container {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section-container.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered Animation for List Items */
+.experience-details li,
+.leadership-details li,
+.project-details li,
+.skill-list li {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.animate .experience-details li,
+.animate .leadership-details li,
+.animate .project-details li,
+.animate .skill-list li {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.animate .experience-details li:nth-child(1),
+.animate .leadership-details li:nth-child(1),
+.animate .project-details li:nth-child(1),
+.animate .skill-list li:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.animate .experience-details li:nth-child(2),
+.animate .leadership-details li:nth-child(2),
+.animate .project-details li:nth-child(2),
+.animate .skill-list li:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.animate .experience-details li:nth-child(3),
+.animate .leadership-details li:nth-child(3),
+.animate .project-details li:nth-child(3),
+.animate .skill-list li:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.animate .experience-details li:nth-child(4),
+.animate .leadership-details li:nth-child(4),
+.animate .project-details li:nth-child(4),
+.animate .skill-list li:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.animate .experience-details li:nth-child(5),
+.animate .leadership-details li:nth-child(5),
+.animate .project-details li:nth-child(5),
+.animate .skill-list li:nth-child(5) {
+    transition-delay: 0.5s;
+}
+
+/* Parallax Scrolling Effect for Hero Section */
+.hero-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Apple-style Form Success Animation */
+.form-success {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.form-success i {
+    font-size: 60px;
+    color: #4CD964;
+    margin-bottom: 20px;
+    animation: success-pulse 2s infinite;
+}
+
+@keyframes success-pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.form-success h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.form-success p {
+    color: var(--apple-gray);
+}
+
+/* Sticky Navigation Styles */
+.nav-container.scrolled {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Interactive Project Gallery */
+.project-gallery {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    scrollbar-width: none; /* Firefox */
+}
+
+.project-gallery::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+
+.gallery-item {
+    flex: 0 0 300px;
+    height: 200px;
+    background-color: var(--apple-light-gray);
+    border-radius: 12px;
+    overflow: hidden;
+    scroll-snap-align: start;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-item-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+    color: white;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-item-caption {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background-color: var(--apple-blue);
+    z-index: 1001;
+    width: 0%;
+    transition: width 0.1s ease;
+}
+
+/* Floating Contact Button */
+.floating-contact {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--apple-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+    cursor: pointer;
+    z-index: 999;
+    transform: scale(0);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.floating-contact.visible {
+    transform: scale(1);
+}
+
+.floating-contact:hover {
+    transform: scale(1.1);
+}
+
+.floating-contact i {
+    font-size: 24px;
+}
+
+/* Additional CSS for disabled scroll buttons */
+.scroll-arrow.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.scroll-arrow.disabled:hover {
+    background-color: var(--apple-white);
+    color: var(--apple-gray);
+    border-color: var(--apple-gray);
+    transform: none;
+}
