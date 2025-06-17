@@ -1,3 +1,4 @@
+
 // Main JavaScript for Portfolio Website
 
 document.addEventListener('DOMContentLoaded', function() {
