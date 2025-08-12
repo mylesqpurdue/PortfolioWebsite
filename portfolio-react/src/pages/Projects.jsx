@@ -10,25 +10,26 @@ const cats = (p) =>
 const TAGS = ["All", "Hardware", "ML", "Web"];
 
 const projectsData = [
-    {
-    id: "fpga-tetris-ai",
-    title: "FPGA Tetris with On-Board AI Player",
-    when: "Independent • 2025",
-    category: ["Hardware"],
-    oneLiner:
-      "Full hardware Tetris in SystemVerilog with an on-FPGA AI player (lookahead) and classic game features.",
-    bullets: [
-      "Implemented game engine entirely in SystemVerilog: piece spawn/rotation, collision, line clear, scoring, soft-drop, and lock delay.",
-      "AI player runs on the FPGA fabric with N-ply lookahead; evaluates placements with heuristics (lines, holes, height/bumpiness) to pick optimal moves in real time.",
-      "Audio & UX polish: classic Tetris feel (incl. music/soft-drop responsiveness).",
-      "Synthesis, static timing, and P&R completed; design verified for tapeout and proceeding to fabrication.",
-      "Produced final GDSII; included die layout visualization for documentation."
-    ],
-    tech: ["SystemVerilog", "FPGA", "Digital Design", "Synthesis", "P&R", "GDSII"],
-    repo: "https://github.com/mixuanpan/starboy", // e.g., "https://github.com/yourname/fpga-tetris-ai"
-    demo: "https://www.youtube.com/watch?v=xY-p4uaP2Ss", // e.g., "https://youtu.be/your-demo" if you have a video
-    cover: "images/starboy_gds_layout.png"
-  },
+{
+  id: "fpga-tetris-ai",
+  title: "FPGA Tetris with On-Board AI Player",
+  when: "Architech Lead • 2025",
+  category: ["Hardware"],
+  status: "Tapeout approved",            // 👈 new
+  oneLiner:
+    "Tapeout-approved SystemVerilog Tetris with an on-FPGA AI (lookahead) and full game features.",
+  bullets: [
+    "Final GDSII signed off; design verified for tapeout and queued for fabrication.",
+    "AI player on FPGA fabric with N-ply lookahead; heuristics for lines/holes/height/bumpiness.",
+    "Complete engine in SystemVerilog: spawn/rotate, collision, line clear, scoring, soft-drop, lock delay.",
+    "Synthesis, STA, and P&R completed; timing clean on target constraints.",
+    "Documentation includes die/layout visualization (GDSII snapshot)."
+  ],
+  tech: ["SystemVerilog","FPGA","Digital Design","Synthesis","STA","P&R","GDSII"],
+  repo: "https://github.com/mixuanpan/starboy",
+  demo: "https://www.youtube.com/watch?v=xY-p4uaP2Ss",
+  cover: "images/starboy_gds_layout.png"
+},
 
   {
     id: "tlv-cpu",
@@ -45,7 +46,7 @@ const projectsData = [
     tech: ["TL-Verilog", "RISC-V", "RTL", "Testbench"],
     repo: "https://github.com/yourname/tlv-riscv",
     demo: null,
-    cover: "images/purdue_logo.png" // replace with a real screenshot when you have one
+    cover: "images/CPUCore.png" // replace with a real screenshot when you have one
   },
   {
     id: "stock-tracker-xgb",
@@ -60,9 +61,9 @@ const projectsData = [
       "Web UI with watchlist, indicator overlays, prediction bands."
     ],
     tech: ["Python", "XGBoost", "Pandas", "Web"],
-    repo: "https://github.com/yourname/stock-tracker-xgb",
-    demo: "https://yourpages.github.io/stock-tracker",
-    cover: null
+    repo: "https://github.com/mylesqpurdue/MatchaMarket",
+    demo: null,
+    cover: "images/MatchaMarket.png"
   },
   {
     id: "ai-accelerator",
@@ -133,6 +134,7 @@ const projects = useMemo(() => {
                   </div>
 
                   <h3 className="project-title">{p.title}</h3>
+                    {p.status && <span className="badge badge-tapeout">{p.status}</span>}
                   <p className="project-oneliner">{p.oneLiner}</p>
 
                   <div className="tech-chips">
@@ -196,7 +198,9 @@ function ProjectModal({ project, onClose }) {
         <button className="modal-close" onClick={onClose} aria-label="Close">×</button>
 
         <div className="modal-header">
-          <h3>{project.title}</h3>
+          <h3>
+            {project.title} {project.status && <span className="badge badge-tapeout">{project.status}</span>}
+          </h3>
         <div className="modal-meta">
           <div className="pill-row">
             {cats(project).map((c) => (
