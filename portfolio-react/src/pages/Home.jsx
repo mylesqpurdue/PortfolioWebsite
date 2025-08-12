@@ -88,8 +88,8 @@ export default function Home() {
       <section className="hero-section">
         <div className="hero-content">
           <h1>Myles Joshua P. Querimit</h1>
-          <p className="tagline">Incoming Design Intern at the Purdue Stars Program</p>
-          <h2>Computer Engineering Student</h2>
+          {/* <p className="tagline">Computer Engineering @ Purdue University</p> */}
+          <h2>Computer Engineering @ Purdue University</h2>
           <p className="hero-description">
             Passionate about chip architecture, embedded design, and artificial intelligence.
           </p>
@@ -106,7 +106,7 @@ export default function Home() {
           <h2 className="section-title">About Me</h2>
           <div className="about-grid">
             <div className="about-text">
-              <p>I'm a Computer Engineering student at Purdue University Indianapolis with a focus on autonomous systems, embedded design, and digital electronics. My passion lies in developing innovative solutions that bridge hardware and software to create impactful technology.</p>
+              <p>I'm a Computer Engineering student at Purdue University with a focus on autonomous systems, embedded design, and digital electronics. My passion lies in developing innovative solutions that bridge hardware and software to create impactful technology.</p>
               <p>Currently, I'm working on research in connected vehicle systems and autonomous underwater vehicles, while pursuing my Bachelor of Science degree expected to be completed in May 2028.</p>
             </div>
             <div className="about-image">
@@ -127,6 +127,7 @@ export default function Home() {
             <div className="education-content">
               <h3>Purdue University</h3>
               <p className="degree">Bachelor of Science, Computer Engineering</p>
+              <p className="degree"> Dean's List</p>
               <p className="location">Indianapolis, Indiana</p>
               <p className="duration">Expected Graduation: May 2028</p>
               <div className="relevant-courses">
