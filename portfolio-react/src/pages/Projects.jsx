@@ -1,14 +1,40 @@
 import { useEffect, useMemo, useState } from "react";
 import useRevealOnScroll from "../hooks/useRevealOnScroll";
 
+// Normalize categories: supports `categories: []` or `category: [] | string`
+const cats = (p) =>
+  Array.isArray(p.categories) ? p.categories :
+  Array.isArray(p.category) ? p.category :
+  p.category ? [p.category] : [];
+
 const TAGS = ["All", "Hardware", "ML", "Web"];
 
 const projectsData = [
+    {
+    id: "fpga-tetris-ai",
+    title: "FPGA Tetris with On-Board AI Player",
+    when: "Independent • 2025",
+    category: ["Hardware"],
+    oneLiner:
+      "Full hardware Tetris in SystemVerilog with an on-FPGA AI player (lookahead) and classic game features.",
+    bullets: [
+      "Implemented game engine entirely in SystemVerilog: piece spawn/rotation, collision, line clear, scoring, soft-drop, and lock delay.",
+      "AI player runs on the FPGA fabric with N-ply lookahead; evaluates placements with heuristics (lines, holes, height/bumpiness) to pick optimal moves in real time.",
+      "Audio & UX polish: classic Tetris feel (incl. music/soft-drop responsiveness).",
+      "Synthesis, static timing, and P&R completed; design verified for tapeout and proceeding to fabrication.",
+      "Produced final GDSII; included die layout visualization for documentation."
+    ],
+    tech: ["SystemVerilog", "FPGA", "Digital Design", "Synthesis", "P&R", "GDSII"],
+    repo: "https://github.com/mixuanpan/starboy", // e.g., "https://github.com/yourname/fpga-tetris-ai"
+    demo: "https://www.youtube.com/watch?v=xY-p4uaP2Ss", // e.g., "https://youtu.be/your-demo" if you have a video
+    cover: "images/starboy_gds_layout.png"
+  },
+
   {
     id: "tlv-cpu",
     title: "TL-Verilog RISC-V CPU Core",
     when: "Independent • Mar 2025",
-    category: "Hardware",
+    category: ["Hardware"],
     oneLiner:
       "Single-cycle RISC-V core in TL-Verilog with IF/ID/EX/MEM/WB and a self-checking testbench.",
     bullets: [
@@ -24,8 +50,8 @@ const projectsData = [
   {
     id: "stock-tracker-xgb",
     title: "Stock Tracker + XGBoost Predictor",
-    when: "Independent • Mar–Apr 2025",
-    category: "ML",
+    when: "Independent • Mar-Apr 2025",
+    category: ["ML", "Web"],
     oneLiner:
       "Feature-engineered signals + XGBoost to forecast daily returns; shipped as a simple tracker.",
     bullets: [
@@ -40,9 +66,9 @@ const projectsData = [
   },
   {
     id: "ai-accelerator",
-    title: "AI Accelerator (Concept & Prototype)",
+    title: "AI Accelerator",
     when: "Research • 2025",
-    category: "Hardware",
+    category: ["Hardware", "ML"],
     oneLiner:
       "Explored systolic MAC arrays & INT8 quantization for edge inference with Verilog prototypes.",
     bullets: [
@@ -63,10 +89,10 @@ export default function Projects() {
   const [activeTag, setActiveTag] = useState("All");
   const [openId, setOpenId] = useState(null);
 
-  const projects = useMemo(
-    () => (activeTag === "All" ? projectsData : projectsData.filter(p => p.category === activeTag)),
-    [activeTag]
-  );
+const projects = useMemo(() => {
+  if (activeTag === "All") return projectsData;
+  return projectsData.filter((p) => cats(p).includes(activeTag));
+}, [activeTag]);
 
   const open = (id) => setOpenId(id);
   const close = () => setOpenId(null);
@@ -97,8 +123,12 @@ export default function Projects() {
               <article key={p.id} className={rowClass}>
                 {/* Left: text */}
                 <div className="project-body">
-                  <div className="project-meta-row">
-                    <span className="pill">{p.category}</span>
+                 <div className="project-meta-row">
+                    <div className="pill-row">
+                      {cats(p).map((c) => (
+                        <span key={c} className="pill">{c}</span>
+                      ))}
+                    </div>
                     <span className="meta">{p.when}</span>
                   </div>
 
@@ -167,10 +197,14 @@ function ProjectModal({ project, onClose }) {
 
         <div className="modal-header">
           <h3>{project.title}</h3>
-          <div className="modal-meta">
-            <span className="pill">{project.category}</span>
-            <span className="meta">{project.when}</span>
+        <div className="modal-meta">
+          <div className="pill-row">
+            {cats(project).map((c) => (
+              <span key={c} className="pill">{c}</span>
+            ))}
           </div>
+          <span className="meta">{project.when}</span>
+        </div>
         </div>
 
         <p className="modal-oneliner">{project.oneLiner}</p>

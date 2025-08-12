@@ -13,6 +13,8 @@
     --content-width: 980px;
 }
 
+.pill-row { display: flex; gap: 6px; flex-wrap: wrap; }
+
 /* Reset and Global Styles */
 
 * {
@@ -381,6 +383,9 @@ ul {
   flex-direction: column;
   gap: 22px;
 }
+.projects-filter { margin: 0 0 28px; }
+
+.projects-list { margin-top: 6px; }
 
 .project-row {
   display: grid;
