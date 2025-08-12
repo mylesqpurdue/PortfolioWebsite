@@ -72,11 +72,16 @@ const Masonry = ({
   colorShiftOnHover = false,
   gutter = 16, // px between items (both directions)
 }) => {
-  const columns = useMedia(
-    ["(min-width:1500px)", "(min-width:1000px)", "(min-width:600px)", "(min-width:400px)"],
-    [5, 4, 3, 2],
-    1
-  );
+const columns = useMedia(
+  [
+    "(min-width:1500px)",
+    "(min-width:1000px)",
+    "(min-width:600px)",
+    "(min-width:400px)",
+  ],
+  [3, 3, 2, 1],  // 👈 max 3 on desktop, 2 on tablet, 1 on mobile
+  1
+);
 
   const [containerRef, { width }] = useMeasure();
   const [imagesReady, setImagesReady] = useState(false);
@@ -126,7 +131,7 @@ const Masonry = ({
       // choose the current shortest column
       const col = colHeights.indexOf(Math.min(...colHeights));
       const x = col * (columnWidth + gutter);
-      const height = child.height / 2; // keep original scaling behavior
+      const height = child.height; // keep original scaling behavior
       const y = colHeights[col];
 
       colHeights[col] += height + gutter; // add vertical gutter

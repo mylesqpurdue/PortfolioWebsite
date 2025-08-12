@@ -51,6 +51,8 @@ function App() {
     { icon: <VscFile size={18} />, label: "Resume",   onClick: () => go("/resume") },
   ];
 
+  const dockClass = location.pathname === "/photos" ? "dock-glass" : "";
+
   return (
     <>
       <Routes>
@@ -63,7 +65,13 @@ function App() {
       {/* Dock fixed at bottom */}
       <div style={{ position: "fixed", left: 0, right: 0, bottom: 0, pointerEvents: "none" }}>
         <div style={{ pointerEvents: "auto" }}>
-          <Dock items={items} panelHeight={68} baseItemSize={50} magnification={70} />
+          <Dock 
+            items={items} 
+            className={dockClass} 
+            panelHeight={68} 
+            baseItemSize={50} 
+            magnification={70} 
+            />
         </div>
       </div>
     </>

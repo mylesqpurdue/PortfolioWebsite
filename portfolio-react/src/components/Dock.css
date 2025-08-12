@@ -66,3 +66,27 @@
   font-size: 12px;
   color: #fff;
 }
+
+/* Glassy Dock variant (Photos page) */
+.dock-panel.dock-glass {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+}
+
+.dock-panel.dock-glass .dock-item {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.dock-panel.dock-glass .dock-label {
+  background: rgba(20, 20, 24, 0.8);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+/* Optional: brighten icons slightly in glass mode */
+.dock-panel.dock-glass .dock-icon svg {
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,.25));
+}

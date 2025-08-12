@@ -1,22 +1,36 @@
+import React from "react";
+import Masonry from "../components/Masonry"; // your Masonry.jsx
 import useRevealOnScroll from "../hooks/useRevealOnScroll";
-import Masonry from "../components/Masonry";
+
+const photoNames = [
+  "IMG_1760","IMG_1954","IMG_2054","IMG_2405","IMG_2588",
+  "IMG_3176","IMG_3214","IMG_3400","IMG_3729","IMG_3731",
+  "IMG_3752","IMG_4023","IMG_5010","IMG_6010","IMG_6572",
+  "IMG_6593","IMG_6635","IMG_9267","IMG_9610"
+];
+
+// Cycle a few nice tile heights for variety (since all are landscape)
+const tileHeights = [440, 480, 520, 560, 600];
+
+const items = photoNames.map((name, i) => ({
+  id: name,
+  img: `images/${name}.jpg`,
+  url: `images/${name}.jpg`,   // opens the full image on click
+  height: tileHeights[i % tileHeights.length],
+}));
 
 export default function Photos() {
   useRevealOnScroll();
 
-  // Use your real images from /public/images (no '?grayscale')
-  const items = [
-    { id: "1", img: "images/altheadshot.jpg",   url: "images/altheadshot.jpg",   height: 500 },
-    { id: "2", img: "images/mylesheadshot.jpg", url: "images/mylesheadshot.jpg", height: 360 },
-    { id: "3", img: "images/mylespiano.jpg",    url: "images/mylespiano.jpg",    height: 600 },
-    // add more here: drop files into /public/images and add objects with a nice height
-  ];
+  React.useEffect(() => {
+    document.body.classList.add("photos-body-dark");
+    return () => document.body.classList.remove("photos-body-dark");
+  }, []);
 
-  return (
-    <main className="section-container">
+    return (
+    <main className="section-container photos-page photos-dark">
       <div className="section-content">
         <h2 className="section-title">Photos</h2>
-
         <Masonry
           items={items}
           ease="power3.out"
@@ -24,9 +38,10 @@ export default function Photos() {
           stagger={0.05}
           animateFrom="bottom"
           scaleOnHover={true}
-          hoverScale={0.95}
+          hoverScale={0.97}
           blurToFocus={true}
-          colorShiftOnHover={false}   // keep colors natural
+          colorShiftOnHover={false}
+          gutter={16}
         />
       </div>
     </main>
