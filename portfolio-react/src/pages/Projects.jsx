@@ -32,7 +32,7 @@ const projectsData = [
 },
 {
   id: "ai-accelerator",
-  title: "AI Accelerator (4x4 Systolic)",
+  title: "AI Accelerator (4x4 Systolic Array)",
   when: "Independent • Mar-Jun 2025",
   category: ["Hardware", "ML"],
   oneLiner:
