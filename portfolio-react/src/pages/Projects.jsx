@@ -13,11 +13,11 @@ const projectsData = [
 {
   id: "fpga-tetris-ai",
   title: "FPGA Tetris with On-Board AI Player",
-  when: "Architech Lead • 2025",
+  when: "Architech Lead • June-August 2025",
   category: ["Hardware"],
   status: "Tapeout approved",            // 👈 new
   oneLiner:
-    "Tapeout-approved SystemVerilog Tetris with an on-FPGA AI (lookahead) and full game features.",
+    "Tapeout-approved SystemVerilog Tetris with an AI autoplayer and full game features.",
   bullets: [
     "Final GDSII signed off; design verified for tapeout and queued for fabrication.",
     "AI player on FPGA fabric with N-ply lookahead; heuristics for lines/holes/height/bumpiness.",
@@ -30,6 +30,25 @@ const projectsData = [
   demo: "https://www.youtube.com/watch?v=xY-p4uaP2Ss",
   cover: "images/starboy_gds_layout.png"
 },
+{
+  id: "ai-accelerator",
+  title: "AI Accelerator (4x4 Systolic)",
+  when: "Independent • Mar-Jun 2025",
+  category: ["Hardware", "ML"],
+  oneLiner:
+    "4x4 INT8 systolic-array accelerator on Pynq-Z2 @ 25 MHz; 3.04x lower latency and 18.78x higher throughput vs a single-core CPU emulation.",
+  bullets: [
+    "Implemented in SystemVerilog; data-flow pipelines for parallel MAC and streaming input.",
+    "Synthesized with Yosys and fit within iCE40 resource constraints (25 MHz timing).",
+    "On-chip SRAM tiling + lightweight DMA; ModelSim testbench for functional verification.",
+    "Benchmarked vs AMD Ryzen 7 8840HS (single-core emulated kernel): 3.04x latency ↓, 18.78x throughput ↑."
+  ],
+  tech: ["SystemVerilog", "Lattice iCE40", "INT8 Quantization", "Systolic Array", "Yosys", "ModelSim", "DMA", "SRAM Tiling"],
+  repo: null, // swap when ready
+  demo: null,
+  cover: "images/pynq-z2.jpg" // add this image (see below)
+},
+
 
   {
     id: "tlv-cpu",
@@ -65,23 +84,6 @@ const projectsData = [
     demo: null,
     cover: "images/MatchaMarket.png"
   },
-  {
-    id: "ai-accelerator",
-    title: "AI Accelerator",
-    when: "Research • 2025",
-    category: ["Hardware", "ML"],
-    oneLiner:
-      "Explored systolic MAC arrays & INT8 quantization for edge inference with Verilog prototypes.",
-    bullets: [
-      "Compared WS/OS/IS dataflows; designed a 16×16 MAC array.",
-      "On-chip SRAM tiling + simple DMA; ModelSim simulations.",
-      "Measured accuracy/throughput tradeoffs on small CNNs."
-    ],
-    tech: ["Verilog", "Computer Architecture", "Quantization"],
-    repo: "https://github.com/yourname/ai-accelerator",
-    demo: null,
-    cover: null
-  }
 ];
 
 export default function Projects() {
