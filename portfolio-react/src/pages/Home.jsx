@@ -1,8 +1,24 @@
 import { useEffect } from "react";
 import useRevealOnScroll from "../hooks/useRevealOnScroll";
+import { useNavigate } from "react-router-dom";  // + add this
+
 
 export default function Home() {
   useRevealOnScroll();
+
+  
+const navigate = useNavigate();
+const goProjects = () => {
+  // close mobile nav if open (keeps your current behavior)
+  const mobileNav = document.querySelector(".mobile-nav");
+  const icon = document.querySelector(".mobile-nav-toggle i");
+  if (mobileNav?.classList.contains("active")) {
+    mobileNav.classList.remove("active");
+    if (icon) { icon.classList.remove("fa-times"); icon.classList.add("fa-bars"); }
+  }
+  navigate("/projects");                      // HashRouter -> goes to #/projects
+  window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+};
 
   const scrollToId = (id) => {
     const el = document.getElementById(id);
@@ -15,6 +31,7 @@ export default function Home() {
     }
   };
 
+  
   useEffect(() => {
     const scrollIndicator = document.querySelector(".scroll-indicator");
     const navContainer = document.querySelector(".nav-container");
@@ -95,7 +112,7 @@ export default function Home() {
           </p>
           <div className="cta-buttons">
             <button className="primary-button" onClick={() => scrollToId("contact")}>Get in Touch</button>
-            <button className="secondary-button" onClick={() => scrollToId("education")}>View Education</button>
+            <button className="secondary-button" onClick={goProjects}>View Projects</button>
           </div>
         </div>
       </section>
