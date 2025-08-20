@@ -1,96 +1,75 @@
+# -------------------------
 # Dependencies
-/node_modules
-/.pnp
+# -------------------------
+node_modules/
+portfolio-react/node_modules/
+.pnp
 .pnp.js
 
-# Testing
-/coverage
+# -------------------------
+# Build Output
+# -------------------------
+# Ignore React build folder (we only deploy its contents into /docs)
+portfolio-react/build/
+dist/
+.cache/
+.parcel-cache
+.vite/
+.next/
+out/
 
-# Production
-/build
+# -------------------------
+# GitHub Pages deployment
+# -------------------------
+# DO NOT ignore /docs — this is needed for deployment
 
-# Misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# -------------------------
+# Source maps
+# -------------------------
+*.map
 
-# Debug logs
+# -------------------------
+# Logs
+# -------------------------
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*.log
 
-# Local development
+# -------------------------
+# Environment files
+# -------------------------
+.env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-# Editor directories and files
-.idea
-.vscode
+# -------------------------
+# Editor / OS files
+# -------------------------
+.DS_Store
+.idea/
+.vscode/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
 
-# Optional npm cache directory
-.npm
-
-# Optional eslint cache
+# -------------------------
+# Misc
+# -------------------------
 .eslintcache
-
-# Optional REPL history
 .node_repl_history
-
-# Output of 'npm pack'
 *.tgz
-
-# Yarn Integrity file
-.yarn-integrity
-
-# dotenv environment variables file
-.env
-
-# parcel-bundler cache (https://parceljs.org/)
-.cache
-.parcel-cache
-
-# Next.js
-.next/
-out/
-
-# Nuxt.js
-.nuxt
-.nuxt/
-.nuxt/*
-
-# Gatsby files
-.cache/
-
-# vuepress build output
-.vuepress/dist
-
-# Serverless directories
-.serverless/
-
-# FuseBox cache
-.fusebox/
-
-# DynamoDB Local files
-.dynamodb/
-
-# TernJS port file
-.tern-port
-
-# Stores VSCode versions used for testing VSCode extensions
-.vscode-test
-
-# yarn v2
 .yarn/cache
 .yarn/unplugged
 .yarn/build-state.yml
 .yarn/install-state.gz
-.pnp.*
+.yarn-integrity
+.serverless/
+.fusebox/
+.dynamodb/
+.tern-port
+.vscode-test

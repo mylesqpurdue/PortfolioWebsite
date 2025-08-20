@@ -10,45 +10,63 @@ const cats = (p) =>
 const TAGS = ["All", "Hardware", "ML", "Web"];
 
 const projectsData = [
-{
-  id: "fpga-tetris-ai",
-  title: "FPGA Tetris with On-Board AI Player",
-  when: "Architech Lead • June-August 2025",
-  category: ["Hardware"],
-  status: "Tapeout approved",            // 👈 new
-  oneLiner:
-    "Tapeout-approved SystemVerilog Tetris with an AI autoplayer and full game features.",
-  bullets: [
-    "Final GDSII signed off; design verified for tapeout and queued for fabrication.",
-    "AI player on FPGA fabric with N-ply lookahead; heuristics for lines/holes/height/bumpiness.",
-    "Complete engine in SystemVerilog: spawn/rotate, collision, line clear, scoring, soft-drop, lock delay.",
-    "Synthesis, STA, and P&R completed; timing clean on target constraints.",
-    "Documentation includes die/layout visualization (GDSII snapshot)."
-  ],
-  tech: ["SystemVerilog","FPGA","Digital Design","Synthesis","STA","P&R","GDSII"],
-  repo: "https://github.com/mixuanpan/starboy",
-  demo: "https://www.youtube.com/watch?v=xY-p4uaP2Ss",
-  cover: "images/starboy_gds_layout.png"
-},
-{
-  id: "ai-accelerator",
-  title: "AI Accelerator (4x4 Systolic Array)",
-  when: "Independent • Mar-Jun 2025",
-  category: ["Hardware", "ML"],
-  oneLiner:
-    "4x4 INT8 systolic-array accelerator on Pynq-Z2 @ 25 MHz; 3.04x lower latency and 18.78x higher throughput vs a single-core CPU emulation.",
-  bullets: [
-    "Implemented in SystemVerilog; data-flow pipelines for parallel MAC and streaming input.",
-    "Synthesized with Yosys and fit within iCE40 resource constraints (25 MHz timing).",
-    "On-chip SRAM tiling + lightweight DMA; ModelSim testbench for functional verification.",
-    "Benchmarked vs AMD Ryzen 7 8840HS (single-core emulated kernel): 3.04x latency ↓, 18.78x throughput ↑."
-  ],
-  tech: ["SystemVerilog", "Lattice iCE40", "INT8 Quantization", "Systolic Array", "Yosys", "ModelSim", "DMA", "SRAM Tiling"],
-  repo: null, // swap when ready
-  demo: null,
-  cover: "images/pynq-z2.jpg" // add this image (see below)
-},
+  // NEW: GEMM project (Aug 2025)
+  {
+    id: "gemm-tiling",
+    title: "GEMM Tiling Sprint (CPU, OpenMP + AVX2)",
+    when: "Independent • Aug 2025",
+    category: ["ML"],
+    oneLiner:
+      "GEMM (C++/OpenMP/AVX2): built tiled + packed FP32 matmul with 64‑B aligned panels and SIMD; ~236 GFLOP/s @4096 and ~80× over 1T naïve @2048; relerr ≤ 1e‑6; reproducible bench + plots.",
+    bullets: [
+      "Engineered a tiled + packed FP32 GEMM with AVX2 vectorization and OpenMP; edge‑case tests pass (Frobenius rel. err ≤ 1e‑6).",
+      "Reached ~236 GFLOP/s at N=4096 and ~80× speedup vs 1‑thread naïve at N=2048; 2.80× improvement from packing over blocked.",
+      "Implemented 64‑B aligned BLIS‑style panel packing, cache‑sized tiling, and thread affinity (PLACES=cores, PROC_BIND=close); reproducible benchmarking with CSV logs and plots."
+    ],
+    tech: ["C++", "OpenMP", "AVX2", "SIMD", "Cache Tiling", "BLIS‑style Packing", "Benchmarking"],
+    repo: null, // add your GitHub repo link when ready
+    demo: null,
+    cover: "images/benchmark_results_20250818_143146_performance.png"
+  },
 
+  {
+    id: "fpga-tetris-ai",
+    title: "FPGA Tetris with On-Board AI Player",
+    when: "Architech Lead • June-August 2025",
+    category: ["Hardware"],
+    status: "Tapeout approved",            // 👈 new
+    oneLiner:
+      "Tapeout-approved SystemVerilog Tetris with an AI autoplayer and full game features.",
+    bullets: [
+      "Final GDSII signed off; design verified for tapeout and queued for fabrication.",
+      "AI player on FPGA fabric with N-ply lookahead; heuristics for lines/holes/height/bumpiness.",
+      "Complete engine in SystemVerilog: spawn/rotate, collision, line clear, scoring, soft-drop, lock delay.",
+      "Synthesis, STA, and P&R completed; timing clean on target constraints.",
+      "Documentation includes die/layout visualization (GDSII snapshot)."
+    ],
+    tech: ["SystemVerilog","FPGA","Digital Design","Synthesis","STA","P&R","GDSII"],
+    repo: "https://github.com/mixuanpan/starboy",
+    demo: "https://www.youtube.com/watch?v=xY-p4uaP2Ss",
+    cover: "images/starboy_gds_layout.png"
+  },
+  {
+    id: "ai-accelerator",
+    title: "AI Accelerator (4x4 Systolic Array)",
+    when: "Independent • Mar-Jun 2025",
+    category: ["Hardware", "ML"],
+    oneLiner:
+      "4x4 INT8 systolic-array accelerator on Pynq-Z2 @ 25 MHz; 3.04x lower latency and 18.78x higher throughput vs a single-core CPU emulation.",
+    bullets: [
+      "Implemented in SystemVerilog; data-flow pipelines for parallel MAC and streaming input.",
+      "Synthesized with Yosys and fit within iCE40 resource constraints (25 MHz timing).",
+      "On-chip SRAM tiling + lightweight DMA; ModelSim testbench for functional verification.",
+      "Benchmarked vs AMD Ryzen 7 8840HS (single-core emulated kernel): 3.04x latency ↓, 18.78x throughput ↑."
+    ],
+    tech: ["SystemVerilog", "Lattice iCE40", "INT8 Quantization", "Systolic Array", "Yosys", "ModelSim", "DMA", "SRAM Tiling"],
+    repo: null, // swap when ready
+    demo: null,
+    cover: "images/pynq-z2.jpg" // add this image (see below)
+  },
 
   {
     id: "tlv-cpu",
@@ -84,6 +102,24 @@ const projectsData = [
     demo: null,
     cover: "images/MatchaMarket.png"
   },
+
+  // NEW: BeWell website (Aug–Sep 2024)
+  {
+    id: "bewell-website",
+    title: "BeWell Home Care Website",
+    when: "Freelance • Aug–Sep 2024",
+    category: ["Web"],
+    oneLiner:
+      "Accessible marketing site with online appointment scheduling, service pages, and direct staff contact.",
+    bullets: [
+      "Designed and built a user‑friendly site with accessibility best practices and clear information architecture.",
+      "Integrated appointment scheduling, service descriptions, and contact workflows for direct communication."
+    ],
+    tech: ["HTML", "CSS", "JavaScript", "Accessibility", "UI/UX"],
+    repo: null,
+    demo: "https://www.bewellhomecareservices.com/",
+    cover: "images/BeWell_Logo.png"
+  },
 ];
 
 export default function Projects() {
@@ -92,10 +128,10 @@ export default function Projects() {
   const [activeTag, setActiveTag] = useState("All");
   const [openId, setOpenId] = useState(null);
 
-const projects = useMemo(() => {
-  if (activeTag === "All") return projectsData;
-  return projectsData.filter((p) => cats(p).includes(activeTag));
-}, [activeTag]);
+  const projects = useMemo(() => {
+    if (activeTag === "All") return projectsData;
+    return projectsData.filter((p) => cats(p).includes(activeTag));
+  }, [activeTag]);
 
   const open = (id) => setOpenId(id);
   const close = () => setOpenId(null);

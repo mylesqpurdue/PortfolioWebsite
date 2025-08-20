@@ -88,8 +88,8 @@ export default function Home() {
       <section className="hero-section">
         <div className="hero-content">
           <h1>Myles Joshua P. Querimit</h1>
-          {/* <p className="tagline">Computer Engineering @ Purdue University</p> */}
-          <h2>Computer Engineering @ Purdue University</h2>
+          <h2>Design Intern — STARS @ Purdue University</h2>
+          <p className="hero-description">Computer Engineering @ Purdue University</p>
           <p className="hero-description">
             Passionate about chip architecture, embedded design, and artificial intelligence.
           </p>
@@ -106,8 +106,9 @@ export default function Home() {
           <h2 className="section-title">About Me</h2>
           <div className="about-grid">
             <div className="about-text">
-              <p>I'm a Computer Engineering student at Purdue University with a focus on autonomous systems, embedded design, and digital electronics. My passion lies in developing innovative solutions that bridge hardware and software to create impactful technology.</p>
-              <p>Currently, I'm working on research in connected vehicle systems and autonomous underwater vehicles, while pursuing my Bachelor of Science degree expected to be completed in May 2028.</p>
+              <p>
+                I'm a Purdue Computer Engineering student focused on digital design and embedded systems. Currently a <strong>Design Track Intern at STARS</strong>, I build FPGA‑based systems in SystemVerilog and verify them end‑to‑end. I enjoy turning ideas into efficient hardware and clean, testable code.
+              </p>
             </div>
             <div className="about-image">
               <img src="images/mylespiano.jpg" alt="Playing piano at campus hall" />
@@ -148,49 +149,55 @@ export default function Home() {
           <h2 className="section-title">Experience</h2>
 
           <div className="timeline-container">
+            {/* CURRENT ROLE: STARS Design Track Intern */}
             <div className="experience-item">
-              <div className="timeline-date">Jan 2025 - Present</div>
+              <div className="timeline-date">May 2025 – Present</div>
+              <div className="experience-header">
+                <h3>Design Track Intern</h3>
+                <p className="company">STARS (Purdue University)</p>
+                <p className="location">West Lafayette, Indiana · On-site</p>
+              </div>
+              <ul className="experience-details">
+                <li>Collaborated with a team to produce the high-level hardware architecture for multiple FPGA projects, defining module interfaces, data-flow pipelines, and resource budgets to meet stringent area and timing constraints.</li>
+                <li>Wrote synthesizable SystemVerilog RTL for a vending machine, drum machine, and pure-hardware Tetris autoplayer—structuring code for modularity, reuse, and ease of verification.</li>
+                <li>Developed comprehensive SystemVerilog testbenches and leveraged GTKWave to achieve 100% functional coverage across all RTL assertions, ensuring no post-synthesis functional failures.</li>
+                <li>Drove the RTL-to-GDSII hardening flow on the Caravel chip harness using OpenLane, preparing the design for physical tape-out.</li>
+              </ul>
+            </div>
+
+            {/* Transportation and Autonomous Systems Institute — Research Assistant */}
+            <div className="experience-item">
+              <div className="timeline-date">Jan 2025 – Present</div>
               <div className="experience-header">
                 <h3>Research Assistant</h3>
                 <p className="company">Transportation and Autonomous Systems Institute</p>
                 <p className="location">Indianapolis, Indiana</p>
               </div>
               <ul className="experience-details">
-                <li>Develop C-based software for autonomous vehicles in Connected Vehicle-to-Everything (CV-V2X) systems.</li>
-                <li>Work directly with sensors and radios, including software-defined radio (SDR) technology, to enhance vehicular communication.</li>
-                <li>Design and implement communication protocols for vehicle-to-vehicle (V2V) and vehicle-to-infrastructure (V2I) interactions.</li>
-                <li>Utilize Wireshark to analyze network traffic, examining packet exchanges between sensors and radios to assess communication performance, data integrity, and protocol efficiency.</li>
+                <li>Develop C-based software for autonomous vehicles in Connected Vehicle‑to‑Everything (CV‑V2X) systems.</li>
+                <li>Work directly with sensors and radios, including software‑defined radio (SDR), to enhance V2V/V2I communication.</li>
+                <li>Design and implement communication protocols for vehicle‑to‑vehicle and vehicle‑to‑infrastructure interactions.</li>
+                <li>Use Wireshark to analyze network traffic and evaluate performance, integrity, and protocol efficiency.</li>
               </ul>
             </div>
 
+            {/* Information Technology Specialist */}
             <div className="experience-item">
-              <div className="timeline-date">Nov 2024 - Present</div>
+              <div className="timeline-date">Aug 2024 – May 2025</div>
               <div className="experience-header">
-                <h3>Co-Founder/Electrical Co-Lead</h3>
-                <p className="company">Boilersub</p>
-                <p className="location">Indianapolis, Indiana</p>
+                <h3>Information Technology Specialist</h3>
+                <p className="company">BeWell Home Care Inc</p>
+                <p className="location">Chicago, Illinois · Remote</p>
               </div>
               <ul className="experience-details">
-                <li>Co-founded a campus-based Robosub team focused on engineering and designing an autonomous underwater vehicle (AUV) to compete against other universities in a series of technical challenges.</li>
-                <li>Led a team in designing and fabricating custom PCBs to optimize power distribution, ensuring efficient operation of the electronics.</li>
+                <li>Designed and developed an accessible, user‑friendly website for a homecare service.</li>
+                <li>Integrated appointment scheduling, service descriptions, and direct staff contact features for streamlined communication.</li>
               </ul>
             </div>
 
+            {/* Student Ambassador (kept in Experience) */}
             <div className="experience-item">
-              <div className="timeline-date">Aug 2024 - Present</div>
-              <div className="experience-header">
-                <h3>Team Member</h3>
-                <p className="company">Purdue ACM SIGBots</p>
-                <p className="location">West Lafayette, Indiana</p>
-              </div>
-              <ul className="experience-details">
-                <li>Collaborated on an engineering-focused technical wikipedia with 20–40,000 average monthly pageviews with over 150 articles explaining the purposes of various aspects of robotics.</li>
-                <li>Contributed in the design for custom 3-D printed components for prototyping mechanisms to be used in the competition robot.</li>
-              </ul>
-            </div>
-
-            <div className="experience-item">
-              <div className="timeline-date">Sep 2024 - Present</div>
+              <div className="timeline-date">Sep 2024 – Present</div>
               <div className="experience-header">
                 <h3>Student Ambassador</h3>
                 <p className="company">ECE Ambassador</p>
@@ -198,18 +205,19 @@ export default function Home() {
               </div>
               <ul className="experience-details">
                 <li>Represent Purdue University at recruitment events, promoting the School of ECE to prospective students.</li>
-                <li>Developed leadership, communication, and presentation skills through interactions with industry partners and alumni.</li>
+                <li>Develop leadership, communication, and presentation skills through interactions with industry partners and alumni.</li>
               </ul>
             </div>
           </div>
         </div>
       </section>
 
-
-      {/* Leadership */}
+      {/* Activities & Leadership */}
       <section id="leadership" className="leadership-section section-container">
         <div className="section-content">
           <h2 className="section-title">Activities &amp; Leadership</h2>
+
+          {/* EPICS (existing) */}
           <div className="leadership-item">
             <div className="leadership-header">
               <h3>Project Lead</h3>
@@ -218,8 +226,36 @@ export default function Home() {
               <p className="duration">September 2024 – Present</p>
             </div>
             <ul className="leadership-details">
-              <li>Leading a cross-disciplinary team to design and construct a custom greenhouse for a local community partner.</li>
-              <li>Spearheading the development of innovative composting and water management systems, ensuring sustainability and efficiency.</li>
+              <li>Lead a cross-disciplinary team to design and construct a custom greenhouse for a local community partner.</li>
+              <li>Spearhead development of innovative composting and water management systems, ensuring sustainability and efficiency.</li>
+            </ul>
+          </div>
+
+          {/* MOVED FROM EXPERIENCE → Activities: Boilersub */}
+          <div className="leadership-item">
+            <div className="leadership-header">
+              <h3>Co‑Founder / Electrical Co‑Lead</h3>
+              <p className="organization">Boilersub</p>
+              <p className="location">Indianapolis, Indiana</p>
+              <p className="duration">November 2024 – Present</p>
+            </div>
+            <ul className="leadership-details">
+              <li>Co-founded a campus Robosub team building an autonomous underwater vehicle (AUV) to compete in technical challenges.</li>
+              <li>Led design and fabrication of custom PCBs and optimized power distribution for reliable electronics operation.</li>
+            </ul>
+          </div>
+
+          {/* MOVED FROM EXPERIENCE → Activities: SIGBots */}
+          <div className="leadership-item">
+            <div className="leadership-header">
+              <h3>Team Member</h3>
+              <p className="organization">Purdue ACM SIGBots</p>
+              <p className="location">West Lafayette, Indiana</p>
+              <p className="duration">August 2024 – Present</p>
+            </div>
+            <ul className="leadership-details">
+              <li>Collaborate on a technical robotics wiki with 20–40k monthly pageviews and 150+ articles spanning hardware and software topics.</li>
+              <li>Contribute 3D‑printed component design for prototyping mechanisms used in competition robots.</li>
             </ul>
           </div>
         </div>
